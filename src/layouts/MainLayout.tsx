@@ -5,7 +5,7 @@ import { Child } from '../types/types';
 const MainLayout = ({ children }: Child): React.ReactElement => {
 	return (
 		<>
-		11
+
 			{children}
 		</>
 	);
