@@ -10,48 +10,46 @@ const lightTheme = createTheme({
 			xl: 1920,
 		},
 	},
-	typography: {
-		fontFamily: [
-			'Open Sans',
-			'-apple-system',
-			'BlinkMacSystemFont',
-			'"Segoe UI"',
-			'Roboto',
-			'"Helvetica Neue"',
-			'Arial',
-			'sans-serif',
-			'"Apple Color Emoji"',
-			'"Segoe UI Emoji"',
-			'"Segoe UI Symbol"',
-		].join(','),
+	palette: {
+		primary: {
+			dark: '#00695f',
+			main: '#b0bec5',
+			light: '#78909c'
+		},
+		secondary: {
+			dark: '#00a152',
+			main: '#00e676',
+			light: '#33eb91',
+			contrastText: '#fff'
+		}
 	},
-	shadows: [
-		'none',
-		'none',
-		'none',
-		'none',
-		'none',
-		'none',
-		'none',
-		'none',
-		'none', //используется выпадашки из селектов TextField
-		'none',
-		'none',
-		'0px 0px 16px rgba(0, 0, 0, 0.25)',
-		'none',
-		'none',
-		'none',
-		'none',
-		'none',
-		'none',
-		'none',
-		'none',
-		'none',
-		'none',
-		'none',
-		'none',
-		'none'
-	],
+	// shadows: [
+	// 	'none',
+	// 	'none',
+	// 	'none',
+	// 	'none',
+	// 	'none',
+	// 	'none',
+	// 	'none',
+	// 	'none',
+	// 	'none', //используется выпадашки из селектов TextField
+	// 	'none',
+	// 	'none',
+	// 	'0px 0px 16px rgba(0, 0, 0, 0.25)',
+	// 	'none',
+	// 	'none',
+	// 	'none',
+	// 	'none',
+	// 	'none',
+	// 	'none',
+	// 	'none',
+	// 	'none',
+	// 	'none',
+	// 	'none',
+	// 	'none',
+	// 	'none',
+	// 	'none'
+	// ],
 	shape: {
 		borderRadius: 8,
 	},
@@ -79,9 +77,11 @@ const lightTheme = createTheme({
 					width: '100%',
 					height: '100%'
 				},
-				'#__root': {
+				'#root': {
 					width: '100%',
+					minWidth: '320px',
 					height: '100%',
+					minHeight: '265px',
 					display: 'flex',
 					flexDirection: 'column'
 				}

@@ -1,10 +1,11 @@
 import React, { ReactElement } from 'react';
+import { Container } from '@material-ui/core';
 
 const NotFound = (): ReactElement => {
 	return (
-		<div>
+		<Container>
 			404
-		</div>
+		</Container>
 	);
 };
 

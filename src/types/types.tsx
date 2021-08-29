@@ -17,3 +17,45 @@ export interface ThemeCtx {
 export interface MetaLT extends Child {
 	title: string;
 }
+
+export interface formLogin {
+	email: string;
+	password: string;
+}
+
+export interface Errors {
+	value: string;
+	msg: string;
+	param: string;
+	location: string;
+}
+
+export type errMsg = 'invalid data' | 'user exists' | 'server error' | 'password is incorrect' | 'user not found'
+
+export interface badResponse {
+	message: errMsg;
+	errors?: Errors[];
+}
+
+export interface useHttpTypes {
+	loading: boolean;
+	request: <T>(url: string, method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | undefined, body?: formLogin | null, headers?: HeadersInit) => Promise<T>;
+	sse: badResponse | 'bad response' | null;
+	clearError: () => void;
+}
+
+export interface useAuthTypes {
+	login: (jwtToken: string, id: string) => void;
+	logout: () => void;
+	token: string | null;
+	userId: string | null;
+}
+
+export interface authData {
+	token: string;
+	userId: string;
+}
+
+export interface AuthCTXTypes extends useAuthTypes {
+	isAuth: boolean;
+}

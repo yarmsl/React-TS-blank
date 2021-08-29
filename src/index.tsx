@@ -1,11 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
-import Routes from './Routes';
+
+import App from './App';
+import AuthProvider from './lib/context/AuthCTX';
 
 ReactDOM.render(
 	<React.StrictMode>
-		<Routes/>
+		<AuthProvider>
+			<App />
+		</AuthProvider>
 	</React.StrictMode>,
 	document.getElementById('root')
 );

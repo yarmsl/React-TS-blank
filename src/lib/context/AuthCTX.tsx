@@ -1,11 +1,26 @@
-import { createAuthProvider } from 'react-token-auth';
+import React, { ReactElement, useContext, createContext, useState, useEffect } from 'react';
+import { AuthCTXTypes, Child } from '../../types/types';
+import { useAuth } from '../hooks/auth.hook';
 
-export const [useAuth, authFetch, login, logout] =
-	createAuthProvider<{ accessToken: string, refreshToken: string }>({
-		accessTokenKey: 'accessToken',
-		onUpdateToken: (token) => fetch('/update-token', {
-			method: 'POST',
-			body: token.refreshToken
-		})
-			.then(r => r.json())
-	});
+
+
+const AuthCTX = createContext({} as AuthCTXTypes);
+
+export const useAuthCtx = (): AuthCTXTypes => useContext(AuthCTX);
+
+const AuthProvider = ({ children }: Child): ReactElement => {
+	const {token, login, logout, userId} = useAuth();
+	const [isAuth, setIsAuth] = useState(false);
+
+	useEffect(() => {
+		setIsAuth(!!token);
+	}, [token]);
+
+	return (
+		<AuthCTX.Provider value={{token, login, logout, userId, isAuth}}>
+			{children}
+		</AuthCTX.Provider>
+	);
+};
+
+export default AuthProvider;

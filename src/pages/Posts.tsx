@@ -1,13 +1,12 @@
 import React, { ReactElement } from 'react';
 import HelmetLayout from '../layouts/HelmetLayout';
 
-const Home = (): ReactElement => {
-
+const Posts = (): ReactElement => {
 	return (
-		<HelmetLayout title='Главная'>
-			Home
+		<HelmetLayout title='Posts'>
+			Posts
 		</HelmetLayout>
 	);
 };
 
-export default Home;
+export default Posts;
