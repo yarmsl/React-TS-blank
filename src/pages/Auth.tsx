@@ -45,7 +45,6 @@ const Auth = (): ReactElement => {
 
 	useEffect(() => {
 		setOpenSnack(snackInit);
-		console.log(sse);
 		if (sse === null) {
 			return;
 		}
@@ -85,7 +84,6 @@ const Auth = (): ReactElement => {
 	const signUp = async (data: formLogin) => {
 		setOpenSnack(snackInit);
 		clearErrors();
-		console.log(data);
 		try {
 			const response = await request('/api/auth/signup', 'POST', data);
 			console.log('signUpRes ', response);
@@ -94,6 +92,13 @@ const Auth = (): ReactElement => {
 				open: true,
 				message: 'Account successfully created'
 			});
+			const resLogin = await request('/api/auth/signin', 'POST', data);
+			console.log('signUp-In ', resLogin);
+			if (resLogin === null || resLogin === undefined) {
+				return;
+			}
+			login((resLogin as authData).token, (resLogin as authData).userId);
+
 		} catch (e) {
 			console.log('signUpError', e);
 		}
@@ -102,7 +107,6 @@ const Auth = (): ReactElement => {
 	const signIn = async (data: formLogin) => {
 		setOpenSnack(snackInit);
 		clearErrors();
-		console.log(data);
 		try {
 			const response = await request('/api/auth/signin', 'POST', data);
 			console.log('signInRes ', response);
@@ -130,6 +134,7 @@ const Auth = (): ReactElement => {
 						defaultValue=''
 						render={({ field: { onChange, value }, fieldState: { error } }) => (
 							<TextField
+								tabIndex={1}
 								className={classes.input}
 								label='Email'
 								fullWidth
@@ -154,6 +159,7 @@ const Auth = (): ReactElement => {
 						defaultValue=''
 						render={({ field: { onChange, value }, fieldState: { error } }) => (
 							<TextField
+								tabIndex={2}
 								className={classes.input}
 								label='Password'
 								fullWidth

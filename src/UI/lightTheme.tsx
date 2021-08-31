@@ -21,7 +21,8 @@ const lightTheme = createTheme({
 			main: '#00e676',
 			light: '#33eb91',
 			contrastText: '#fff'
-		}
+		},
+
 	},
 	// shadows: [
 	// 	'none',

@@ -51,9 +51,14 @@ export interface useAuthTypes {
 	userId: string | null;
 }
 
-export interface authData {
-	token: string;
+export interface User {
 	userId: string;
+	name: string;
+	avatar: string;
+}
+
+export interface authData extends User {
+	token: string;
 }
 
 export interface AuthCTXTypes extends useAuthTypes {

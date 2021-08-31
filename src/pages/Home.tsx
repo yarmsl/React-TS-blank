@@ -4,7 +4,7 @@ import HelmetLayout from '../layouts/HelmetLayout';
 const Home = (): ReactElement => {
 
 	return (
-		<HelmetLayout title='Главная'>
+		<HelmetLayout title='main'>
 			Home
 		</HelmetLayout>
 	);
