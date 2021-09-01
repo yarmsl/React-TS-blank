@@ -27,7 +27,7 @@ const useStyles = makeStyles(({ palette }) => ({
 const Header = (): ReactElement => {
 	const classes = useStyles();
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-	const { logout } = useAuthCtx();
+	const { logout, isAuth } = useAuthCtx();
 	const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
 		setAnchorEl(event.currentTarget);
 	};
@@ -39,26 +39,28 @@ const Header = (): ReactElement => {
 		<AppBar position='sticky'>
 			<Container className={classes.header}>
 				<Typography variant='h5' component='h1' className={classes.logo}>Console.logbook(&apos;123&apos;)</Typography>
-				<IconButton aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-					<Avatar className={classes.avatar}></Avatar>
-				</IconButton>
-				<Menu
-					id="simple-menu"
-					anchorEl={anchorEl}
-					keepMounted
-					open={Boolean(anchorEl)}
-					onClose={handleClose}
-				>
-					<MenuItem>
-						<PersonIcon/>
-						<Typography className={classes.menuTitle}>Profile</Typography>
-					</MenuItem>
-					<Divider />
-					<MenuItem onClick={() => {logout(); handleClose();}}>
-						<ExitToAppRoundedIcon/>
-						<Typography className={classes.menuTitle}>Logout</Typography>
-					</MenuItem>
-				</Menu>
+				{isAuth && <>
+					<IconButton aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+						<Avatar className={classes.avatar}></Avatar>
+					</IconButton>
+					<Menu
+						id="simple-menu"
+						anchorEl={anchorEl}
+						keepMounted
+						open={Boolean(anchorEl)}
+						onClose={handleClose}
+					>
+						<MenuItem>
+							<PersonIcon />
+							<Typography className={classes.menuTitle}>Profile</Typography>
+						</MenuItem>
+						<Divider />
+						<MenuItem onClick={() => { logout(); handleClose(); }}>
+							<ExitToAppRoundedIcon />
+							<Typography className={classes.menuTitle}>Logout</Typography>
+						</MenuItem>
+					</Menu>
+				</>}
 			</Container>
 		</AppBar>
 	);
