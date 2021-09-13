@@ -85,14 +85,18 @@ const Auth = (): ReactElement => {
 		setOpenSnack(snackInit);
 		clearErrors();
 		try {
-			const response = await request('/api/auth/signup', 'POST', data);
+			const response = await request('/api/auth/signup', 'POST', data, {
+				'Content-Type': 'application/json'
+			});
 			console.log('signUpRes ', response);
 			setOpenSnack({
 				type: 'success',
 				open: true,
 				message: 'Account successfully created'
 			});
-			const resLogin = await request('/api/auth/signin', 'POST', data);
+			const resLogin = await request('/api/auth/signin', 'POST', data, {
+				'Content-Type': 'application/json'
+			});
 			console.log('signUp-In ', resLogin);
 			if (resLogin === null || resLogin === undefined) {
 				return;
@@ -108,7 +112,9 @@ const Auth = (): ReactElement => {
 		setOpenSnack(snackInit);
 		clearErrors();
 		try {
-			const response = await request('/api/auth/signin', 'POST', data);
+			const response = await request('/api/auth/signin', 'POST', data, {
+				'Content-Type': 'application/json'
+			});
 			console.log('signInRes ', response);
 			if (response === null || response === undefined) {
 				return;

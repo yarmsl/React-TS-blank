@@ -1,5 +1,6 @@
 import { Theme } from '@material-ui/core';
 import React from 'react';
+import { postProps } from '../pages/AddPost';
 
 export interface Child  {
 	children?: React.ReactNode;
@@ -39,7 +40,7 @@ export interface badResponse {
 
 export interface useHttpTypes {
 	loading: boolean;
-	request: <T>(url: string, method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | undefined, body?: formLogin | null, headers?: HeadersInit) => Promise<T>;
+	request: <T>(url: string, method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | undefined, body?: formLogin | postProps | null, headers?: HeadersInit) => Promise<T>;
 	sse: badResponse | 'bad response' | null;
 	clearError: () => void;
 }

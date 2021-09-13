@@ -55,7 +55,7 @@ const Header = (): ReactElement => {
 							<Typography className={classes.menuTitle}>Profile</Typography>
 						</MenuItem>
 						<Divider />
-						<MenuItem onClick={() => { logout(); handleClose(); }}>
+						<MenuItem onClick={() => { logout();  handleClose(); }}>
 							<ExitToAppRoundedIcon />
 							<Typography className={classes.menuTitle}>Logout</Typography>
 						</MenuItem>

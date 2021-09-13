@@ -2,8 +2,6 @@ import React, { ReactElement, useContext, createContext, useState, useEffect } f
 import { AuthCTXTypes, Child } from '../../types/types';
 import { useAuth } from '../hooks/auth.hook';
 
-
-
 const AuthCTX = createContext({} as AuthCTXTypes);
 
 export const useAuthCtx = (): AuthCTXTypes => useContext(AuthCTX);

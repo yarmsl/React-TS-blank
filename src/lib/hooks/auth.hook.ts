@@ -10,7 +10,10 @@ export const useAuth = (): useAuthTypes => {
 	const login = useCallback((jwtToken: string, id: string) => {
 		setToken(jwtToken);
 		setUserId(id);
-		localStorage.setItem(storeName, JSON.stringify({ userId: id, token: jwtToken }));
+		localStorage.setItem(
+			storeName,
+			JSON.stringify({ userId: id, token: jwtToken })
+		);
 	}, []);
 
 	const logout = useCallback(() => {
@@ -25,7 +28,7 @@ export const useAuth = (): useAuthTypes => {
 			const parseData: authData = JSON.parse(data);
 			login(parseData.token, parseData.userId);
 		}
-	},[login]);
+	}, [login]);
 
 	return { login, logout, token, userId };
 };

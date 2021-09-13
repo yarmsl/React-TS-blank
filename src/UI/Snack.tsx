@@ -40,7 +40,6 @@ const Snack = ({ open, type, message }: SnackProps): ReactElement => {
 	const [openSnack, setOpenSnack] = useState(false);
 
 	useEffect(() => {
-		console.log('snack');
 		setOpenSnack(open);
 	}, [open]);
 
